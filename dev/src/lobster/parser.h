@@ -174,7 +174,9 @@ struct Parser {
                         }
                         fn += ".lobster";
                     }
-                    Expect(T_LINEFEED);
+                    if (lex.token != T_ENDOFFILE) {
+                        Expect(T_LINEFEED);
+                    }
                     lex.Include(fn);
                     ParseTopExp(list);
                 }
@@ -1483,7 +1485,7 @@ struct Parser {
         // Check for function call without ().
         if (!id &&
             !field &&
-            (nf || f) &&
+             (nf || f) &&
             lex.whitespacebefore > 0 &&
             lex.token != T_LINEFEED) {
             return ParseFunctionCall(f, nf, idname, nullptr, true, nullptr);

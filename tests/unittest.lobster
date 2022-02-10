@@ -26,5 +26,3 @@ import stringtest
 import lifetimetest
 import builtintest
 import operators
-
-"the end"  // FIXME: a file can not be only import files?
